@@ -7,8 +7,13 @@ class SignupController extends GetxController {
     'name': FormControl<String>(validators: [Validators.required, Validators.minLength(3)]),
     'login': FormControl<String>(validators: [Validators.required, Validators.minLength(6)]),
     'password': FormControl<String>(validators: [Validators.required, Validators.minLength(6)]),
-    'confPassword': FormControl<String>(validators: [Validators.required, Validators.minLength(6)]),
-  });
+    'confPassword': FormControl<String>(validators: [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
+  }, validators: [
+    Validators.mustMatch('password', 'confPassword'),
+  ]);
 
   Future<void> onSubmit() async {
     if (form.valid) {

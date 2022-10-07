@@ -7,7 +7,7 @@ class HomeController extends GetxController {
   FormControl<String> searchControl = FormControl<String>(value: '');
   List<Fornecedor> _fornecedores = [];
 
-  RxBool _isLoading = false.obs;
+  final RxBool _isLoading = false.obs;
 
   bool get isLoading => _isLoading.value;
   set isLoading(bool value) => _isLoading.value = value;
@@ -18,18 +18,29 @@ class HomeController extends GetxController {
     update();
   }
 
-
   Future<void> loadFornecedores() async {
-    isLoading = true;
-    
     fornecedores = await FornecedorUseCases.readAllFornecedorController.handle();
+  }
 
+  Future<void> _init() async {
+    searchControl.valueChanges.listen((event) => update());
+
+    isLoading = true;
+    await loadFornecedores();
     isLoading = false;
   }
-  
+
+  static HomeController get to => Get.find();
+
   @override
   void onInit() {
     super.onInit();
-    loadFornecedores();
+    _init();
+  }
+
+  @override
+  void onClose() {
+    searchControl.dispose();
+    super.onClose();
   }
 }

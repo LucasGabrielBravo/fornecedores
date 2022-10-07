@@ -1,16 +1,16 @@
 import 'package:fornecedores/models/user.dart';
 import 'package:sqflite/sqflite.dart';
 
-class UserRepository {  
+class UserRepository {
   static const String _tableName = 'users';
 
   Future<Database> _db() async {
     final databasePath = await getDatabasesPath();
-    final path = '$databasePath/fornecedores.db';
+    final path = '$databasePath/user.db';
 
     return await openDatabase(
       path,
-      version: 2,
+      version: 1,
       onCreate: (db, version) async {
         await db.execute('''          
           CREATE TABLE $_tableName (
@@ -21,14 +21,14 @@ class UserRepository {
           )
         ''');
       },
-    );        
+    );
   }
 
   Future<void> create(User user, String password) async {
     final database = await _db();
 
     final data = {
-      ...user.toMap(),      
+      ...user.toMap(),
       'password': password,
     };
 
@@ -104,7 +104,7 @@ class UserRepository {
 
   Future<List<User>> readAll() async {
     final database = await _db();
-    
+
     final data = await database.query(_tableName);
 
     await database.close();
