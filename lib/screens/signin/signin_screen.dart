@@ -10,7 +10,7 @@ class SignInScreen extends GetView<SignInController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Lucas Gabriel'),      
+        title: const Text('Lucas Gabriel'),
       ),
       backgroundColor: Theme.of(context).primaryColor,
       body: SafeArea(
@@ -37,7 +37,7 @@ class SignInScreen extends GetView<SignInController> {
                   'Informe o login e senha para continuar',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,                    
+                    fontSize: 16,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -61,6 +61,7 @@ class SignInScreen extends GetView<SignInController> {
                                 decoration: const InputDecoration(
                                   labelText: 'Login',
                                 ),
+                                keyboardType: TextInputType.emailAddress,
                               ),
                             ),
                             SizedBox(
@@ -70,14 +71,16 @@ class SignInScreen extends GetView<SignInController> {
                                 decoration: const InputDecoration(
                                   labelText: 'Senha',
                                 ),
+                                keyboardType: TextInputType.visiblePassword,
+                                obscureText: true,
                               ),
-                            ),                            
+                            ),
                             MaterialButton(
                               color: Get.theme.primaryColor,
                               onPressed: controller.onSubmit,
                               splashColor: Get.theme.primaryColorDark,
-                              child: const Text('Entrar', style: TextStyle(color: Colors.white)),                              
-                            ),                            
+                              child: const Text('Entrar', style: TextStyle(color: Colors.white)),
+                            ),
                           ],
                         ),
                       ),

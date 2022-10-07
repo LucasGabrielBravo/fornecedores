@@ -4,8 +4,8 @@ import 'package:reactive_forms/reactive_forms.dart';
 
 class SignInController extends GetxController {
   final FormGroup form = FormGroup({
-    'login': FormControl<String>(validators: [Validators.required, Validators.minLength(6)], value: 'lgbravo'),
-    'password': FormControl<String>(validators: [Validators.required, Validators.minLength(6)], value: '12345678'),
+    'login': FormControl<String>(validators: [Validators.required, Validators.minLength(6)]),
+    'password': FormControl<String>(validators: [Validators.required, Validators.minLength(6)]),
   });
 
   Future<void> onSubmit() async {
@@ -19,7 +19,7 @@ class SignInController extends GetxController {
         Get.offAllNamed('/home');
       } else {
         Get.snackbar('Erro', 'Usuário ou senha inválidos');
-      }      
+      }
     } else {
       Get.snackbar('Erro', 'Formulário inválido');
     }

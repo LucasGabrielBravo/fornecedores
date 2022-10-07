@@ -1,7 +1,7 @@
 import 'package:fornecedores/models/fornecedor.dart';
 import 'package:sqflite/sqflite.dart';
 
-class FornecedorRepository {  
+class FornecedorRepository {
   static const String _tableName = 'fornecedor';
 
   Future<Database> _db() async {
@@ -10,7 +10,7 @@ class FornecedorRepository {
 
     return await openDatabase(
       path,
-      version: 2,
+      version: 1,
       onCreate: (db, version) async {
         await db.execute('''          
           CREATE TABLE $_tableName (
@@ -19,9 +19,9 @@ class FornecedorRepository {
             cidade TEXT NOT NULL,
             estado TEXT NOT NULL
           )
-        ''');              
+        ''');
       },
-    );        
+    );
   }
 
   Future<void> create(Fornecedor fornecedor) async {

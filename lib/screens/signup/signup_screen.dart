@@ -12,21 +12,20 @@ class SignupScreen extends GetWidget<SignupController> {
       backgroundColor: Theme.of(context).primaryColor,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Container(                      
+          child: Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.all(24.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 SizedBox(height: Get.context!.height * 0.05),
-
                 const Text(
                   'Crie uma conta para fazer o primeiro acesso',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
-                  ),                  
+                  ),
                 ),
                 ReactiveFormConfig(
                   validationMessages: {
@@ -56,6 +55,7 @@ class SignupScreen extends GetWidget<SignupController> {
                                 decoration: const InputDecoration(
                                   labelText: 'Login',
                                 ),
+                                keyboardType: TextInputType.emailAddress,
                               ),
                             ),
                             SizedBox(
@@ -65,6 +65,8 @@ class SignupScreen extends GetWidget<SignupController> {
                                 decoration: const InputDecoration(
                                   labelText: 'Senha',
                                 ),
+                                keyboardType: TextInputType.visiblePassword,
+                                obscureText: true,
                               ),
                             ),
                             SizedBox(
@@ -74,6 +76,11 @@ class SignupScreen extends GetWidget<SignupController> {
                                 decoration: const InputDecoration(
                                   labelText: 'Confirme a senha',
                                 ),
+                                obscureText: true,
+                                keyboardType: TextInputType.visiblePassword,
+                                validationMessages: {
+                                  ValidationMessage.mustMatch: (error) => 'As senhas não conferem',
+                                },
                               ),
                             ),
                             ElevatedButton(
