@@ -27,6 +27,7 @@ class SignupScreen extends GetWidget<SignupController> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                const SizedBox(height: 16),
                 ReactiveFormConfig(
                   validationMessages: {
                     ValidationMessage.required: (error) => 'Campo obrigatório',

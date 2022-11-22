@@ -9,9 +9,6 @@ class SignInScreen extends GetView<SignInController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Lucas Gabriel'),
-      ),
       backgroundColor: Theme.of(context).primaryColor,
       body: SafeArea(
         child: SingleChildScrollView(

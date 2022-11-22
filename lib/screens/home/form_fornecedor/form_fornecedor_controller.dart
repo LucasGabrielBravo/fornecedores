@@ -25,9 +25,15 @@ class FormFornecedorController extends GetxController {
       HomeController.to.loadFornecedores();
 
       Get.back();
-      Get.snackbar('Sucesso', 'Fornecedor cadastrado');
+      Get.rawSnackbar(
+        title: 'Sucesso',
+        message: 'Fornecedor cadastrado',
+      );
     } else {
-      Get.snackbar('Erro', 'Formulário inválido');
+      Get.rawSnackbar(
+        title: 'Erro',
+        message: 'Formulário inválido',
+      );
     }
   }
 
@@ -40,9 +46,15 @@ class FormFornecedorController extends GetxController {
       HomeController.to.loadFornecedores();
 
       Get.back();
-      Get.snackbar('Sucesso', 'Fornecedor excluído');
+      Get.rawSnackbar(
+        title: 'Sucesso',
+        message: 'Fornecedor excluído',
+      );
     } else {
-      Get.snackbar('Erro', 'Matricula inválida');
+      Get.rawSnackbar(
+        title: 'Erro',
+        message: 'Matricula inválida',
+      );
     }
   }
 }
